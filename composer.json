@@ -1,0 +1,35 @@
+{
+    "name": "tavao/psicologia",
+    "require": {
+        "league/plates": "^3.5",
+        "coffeecode/router": "^2.0",
+        "symfony/var-dumper": "^7.0",
+        "vlucas/phpdotenv": "^5.6",
+        "comtele/comtele_sdk": "^1.1",
+        "gemini-api-php/client": "^1.4",
+        "symfony/http-client": "^7.1",
+        "nyholm/psr7": "^1.8"
+    },
+    "autoload": {
+        "files": [
+            "helpers/sessionsHelpers.php",
+            "helpers/helpers.php"
+        ],
+        "psr-4": {
+            "Config\\": "Config/",
+            "Web\\": "Web/",
+            "Src\\": "Src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Gustavo de Oliveira Fagundes",
+            "email": "jamesgustavo133@gmail.com"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}
