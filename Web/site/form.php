@@ -126,12 +126,13 @@ console.log(evt.params.data);
                 // Iterar sobre os distritos e adicionar apenas os municípios
                 distritos.forEach(distrito => {
                     const nomeMunicipio = distrito.municipio.nome;
+                    const nomeEstado = distrito.municipio.microrregiao.mesorregiao.UF.nome;
 
                     // Verificar se o município já foi adicionado
                     if (!municipiosAdicionados.has(nomeMunicipio)) {
                         const opcao = document.createElement('option');
-                        opcao.value = nomeMunicipio;
-                        opcao.textContent = nomeMunicipio;
+                        opcao.value = `${nomeMunicipio}-${nomeEstado}`; // Concatenar município e estado com "-"
+                        opcao.textContent = `${nomeMunicipio} - ${nomeEstado}`;
                         
                         // Adicionar o município ao select e ao Set de controle
                         selectCidade.appendChild(opcao);

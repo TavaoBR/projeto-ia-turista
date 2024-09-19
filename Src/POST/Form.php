@@ -84,12 +84,21 @@ class Form
 
 
         $passeios = implode(', ', $this->passeios);
-        $texto = "Olá, me chamo(a) {$this->nome}, vou viajar para {$this->cidade} {$this->acompanhado} e quero montar um cronograma de turismo com {$passeios}.
-        Observação: colocar o endereço dos locais
-        comece o texto do roteiro informando meu nome no inicio, exemplo, Roteiro de turismo para {$this->nome}
-        ";
+        $texto = "Olá, me chamo {$this->nome}. Estou planejando uma viagem para {$this->cidade} {$this->acompanhado} e gostaria de criar um cronograma turístico que inclua {$passeios} ao longo de {$this->dias}.
+
+Observação: por favor, não inclua informações de outras cidades além de {$this->cidade}.
+
+Inicie o roteiro mencionando meu nome, por exemplo: Roteiro de turismo para {$this->nome}.";
         $ia = new IA($texto);
-        
+        $textoGerado1 = $ia->gerar();
+
+        $formeEsse = "Formate o texto abaixo utilizando tags HTML. Não é necessário usar as tags <html>, <h1> ou <h2>. Siga o padrão fornecido em {$this->exemplos()}. Observações:
+        Use a classe class='resume-title' nas tags apropriadas.
+        Não remova o título, que deve ser inserido como <h3 class='resume-title'>.
+        Texto a ser formatado: $textoGerado1";
+
+        $ia2 = new IA( $formeEsse);
+        $textoGerado2 = $ia2->gerar();
 
         $array = [
             "id" => $novoId,
@@ -98,7 +107,7 @@ class Form
             "Está indo ?" => $this->acompanhado,
             "Quantos dias ?" => $this->dias,
             "Passeios" => $passeios,
-            "Roteiro" => $ia->gerar()
+            "Roteiro" => $textoGerado2
         ];
 
         $dadosExistentes[] = $array;
@@ -112,5 +121,62 @@ class Form
 
 
 
+    }
+
+
+    private function exemplos()
+    {
+         return " 
+         Não utilize esse texto, é apenas um exemplo para usar os elementos de html
+         <p><em><h3>Roteiro de Turismo para Gustavo Oliveira Fagundes em São Paulo (2 Dias)</h3>
+
+            <h4>Dia 1</h4>
+            <h4 class='resume-title'>Atrações Culturais:</h4>
+            <ol>
+                <li>Museu de Arte de São Paulo (MASP) (Avenida Paulista, 1578)</li>
+            </ol>
+
+            <h4 class='resume-title'>Atrações Históricas:</h4>
+            <ol>
+                <li>Museu da Língua Portuguesa (Praça da Sé, 102)</li>
+                <li>Igreja da Sé (Praça da Sé, s/n)</li>
+            </ol>
+
+            <h4 class='resume-title'>Passeios Gastronômicos:</h4>
+            <ol>
+                <li>Mercado Municipal (Rua da Cantareira, 306)</li>
+                <li>Vila Madalena (Rua Aspicuelta, s/n)</li>
+            </ol>
+
+            <h4 class='resume-title'>Passeios Noturnos:</h4>
+            <ol>
+                <li>Avenida Paulista (Avenida Paulista, s/n)</li>
+                <li>Terraço Itália (Avenida Ipiranga, 344)</li>
+            </ol>
+
+            <h4>Dia 2</h4>
+            <h4 class='resume-title'>Atrações Culturais:</h4>
+            <ol>
+                <li>Pinacoteca do Estado de São Paulo (Praça da Luz, 2)</li>
+                <li>Itaú Cultural (Avenida Paulista, 149)</li>
+            </ol>
+
+            <h4 class='resume-title'>Atrações Históricas:</h4>
+            <ol>
+                <li>Museu do Ipiranga (Parque da Independência, s/n)</li>
+                <li>Conjunto Arquitetônico da Universidade de São Paulo (USP) (Cidade Universitária, s/n)</li>
+            </ol>
+
+            <h4 class='resume-title'>Passeios Gastronômicos:</h4>
+            <ol>
+                <li>Liberdade (Rua Galvão Bueno, s/n)</li>
+                <li>Bixiga (Rua Treze de Maio, s/n)</li>
+            </ol>
+
+            <h4 class='resume-title'>Passeios Noturnos:</h4>
+            <ol>
+                <li>Beco do Batman (R. Gonçalo Afonso, s/n)</li>
+                <li>Sky Nightclub (Rua Augusta, 2552)</li>
+            </ol></em></p>";
     }
 }
