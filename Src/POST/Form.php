@@ -10,8 +10,7 @@ class Form
     private string $nome;
     private string $cidade;
     private string $acompanhado;
-    private $dias;
-    private $passeios;
+    private $personalidade;
     private Validate $validate;
 
     public function __construct()
@@ -19,9 +18,8 @@ class Form
         $this->nome = $_POST['nome'];
         $this->cidade = $_POST['cidade'];
         $this->acompanhado = $_POST['acompanhado'];
-        $this->passeios = $_POST['passeios'];
+        $this->personalidade = $_POST['personalidade'];
         $this->validate = new Validate;
-        $this->dias = $_POST['dias'];
     }
 
     public function Result()
@@ -40,8 +38,7 @@ class Form
           "Nome" => $this->nome,
           "Destino" => $this->cidade,
           "Está indo ?" => $this->acompanhado,
-          "Quantos dias ?" => $this->dias,
-          "Opções de passeios" => $this->passeios
+          "Opções de personalidade" => $this->personalidade
        ];
 
        if($this->validate->validate($data) != false){
@@ -83,19 +80,21 @@ class Form
         }
 
 
-        $passeios = implode(', ', $this->passeios);
-        $texto = "Olá, me chamo {$this->nome}. Estou planejando uma viagem para {$this->cidade} {$this->acompanhado} e gostaria de criar um cronograma turístico que inclua {$passeios} ao longo de {$this->dias}.
-
-Observação: por favor, não inclua informações de outras cidades além de {$this->cidade}.
-
-Inicie o roteiro mencionando meu nome, por exemplo: Roteiro de turismo para {$this->nome}.";
+        $personalidade = implode(', ', $this->personalidade);
+        $texto = "Olá, meu nome é {$this->nome}. Estou planejando uma viagem para {$this->cidade} {$this->acompanhado} e gostaria que você analisasse meus gostos e interesses, que são descritos pela minha personalidade: {$personalidade}. Com base nisso, por favor, sugira lugares e atividades para fazer na cidade de {$this->cidade}.
+        Observações importantes:
+       1. Sugira apenas locais e atividades dentro de {$this->cidade}.
+       2. Não é necessário criar um cronograma diário.
+       3. Inicie o roteiro mencionando meu nome, por exemplo: 'Roteiro de turismo para {$this->nome}'.";
         $ia = new IA($texto);
         $textoGerado1 = $ia->gerar();
 
-        $formeEsse = "Formate o texto abaixo utilizando tags HTML. Não é necessário usar as tags <html>, <h1> ou <h2>. Siga o padrão fornecido em {$this->exemplos()}. Observações:
-        Use a classe class='resume-title' nas tags apropriadas.
-        Não remova o título, que deve ser inserido como <h3 class='resume-title'>.
-        Texto a ser formatado: $textoGerado1";
+        $formeEsse = "Formate o texto abaixo utilizando tags HTML, conforme as seguintes orientações:
+       1. Não utilize as tags <html>, <h1>, ou <h2>.
+       2. Insira o título como <h3 class='resume-title'>.
+       3. Use a classe class='resume-title' nas tags adequadas.
+       4. Não remova o título do texto.
+       5. Texto a ser formatado: {$textoGerado1}";
 
         $ia2 = new IA( $formeEsse);
         $textoGerado2 = $ia2->gerar();
@@ -105,8 +104,7 @@ Inicie o roteiro mencionando meu nome, por exemplo: Roteiro de turismo para {$th
             "Nome" => $this->nome,
             "Destino" => $this->cidade,
             "Está indo ?" => $this->acompanhado,
-            "Quantos dias ?" => $this->dias,
-            "Passeios" => $passeios,
+            "Opções de personalidade" => $personalidade,
             "Roteiro" => $textoGerado2
         ];
 

@@ -23,10 +23,8 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="small mb-1" for="inputNotificationEmail">Cidade destino</label>
-                            <select name="cidade" id="cidadeSelect" class="form-control mySelect2" >
-                                <option value="">Escolha uma opção</option>
-                            </select>
+                            <label class="small mb-1" for="inputNotificationEmail">Destino</label>
+                            <input type="text" name="cidade" class="form-control" placeholder="digite o nome do local que tu quer visitar">
                         </div>
 
                         <div class="mb-3">
@@ -40,33 +38,89 @@
                             </select>
                         </div>
 
-                        <div class="mb-3">
-                            <label class="small mb-1" for="inputNotificationEmail">Quantos dias ?</label>
-                             <input type="number" name="dias" id="" minlength="1" maxlength="10" class="form-control">
-                        </div>
+                           <div class="mb-0">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" id="checkAdventure" type="checkbox" name="personalidade[]" value="Gosto de aventuras e atividades ao ar livre">
+                                    <label class="form-check-label" for="checkAdventure">
+                                        Gosto de aventuras e atividades ao ar livre
+                                    </label>
+                                </div>
+
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" id="checkCultural" type="checkbox" name="personalidade[]" value="Tenho interesse por cultura e museus">
+                                    <label class="form-check-label" for="checkCultural">
+                                        Tenho interesse por cultura e museus
+                                    </label>
+                                </div>
+
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" id="checkRelax" type="checkbox" name="personalidade[]" value="Prefiro relaxar em locais tranquilos">
+                                    <label class="form-check-label" for="checkRelax">
+                                        Prefiro relaxar em locais tranquilos
+                                    </label>
+                                </div>
+
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" id="checkGastronomy" type="checkbox" name="personalidade[]" value="Aprecio experiências gastronômicas">
+                                    <label class="form-check-label" for="checkGastronomy">
+                                        Aprecio experiências gastronômicas
+                                    </label>
+                                </div>
+
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" id="checkNightlife" type="checkbox" name="personalidade[]" value="Gosto de vida noturna e eventos sociais">
+                                    <label class="form-check-label" for="checkNightlife">
+                                        Gosto de vida noturna e eventos sociais
+                                    </label>
+                                </div>
+
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" id="checkShopping" type="checkbox" name="personalidade[]" value="Aprecio fazer compras e visitar mercados locais">
+                                    <label class="form-check-label" for="checkShopping">
+                                        Aprecio fazer compras e visitar mercados locais
+                                    </label>
+                                </div>
+
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" id="checkHistory" type="checkbox" name="personalidade[]" value="Tenho interesse por história e locais históricos">
+                                    <label class="form-check-label" for="checkHistory">
+                                        Tenho interesse por história e locais históricos
+                                    </label>
+                                </div>
+
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" id="checkSports" type="checkbox" name="personalidade[]" value="Gosto de esportes e atividades físicas">
+                                    <label class="form-check-label" for="checkSports">
+                                        Gosto de esportes e atividades físicas
+                                    </label>
+                                </div>
+
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" id="checkNature" type="checkbox" name="personalidade[]" value="Prefiro locais com muita natureza e paisagens naturais">
+                                    <label class="form-check-label" for="checkNature">
+                                        Prefiro locais com muita natureza e paisagens naturais
+                                    </label>
+                                </div>
+
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" id="checkLuxury" type="checkbox" name="personalidade[]" value="Aprecio experiências de luxo e hotéis 5 estrelas">
+                                    <label class="form-check-label" for="checkLuxury">
+                                        Aprecio experiências de luxo e hotéis 5 estrelas
+                                    </label>
+                                </div>
+
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" id="checkPhotography" type="checkbox" name="personalidade[]" value="Tenho interesse em fotografia e cenários fotogênicos">
+                                    <label class="form-check-label" for="checkPhotography">
+                                        Tenho interesse em fotografia e cenários fotogênicos
+                                    </label>
+                                </div>
+                            </div>
 
 
 
-                        <!-- Form Group (email updates checkboxes)-->
-                        <div class="mb-0">
-                            <label class="small mb-2">Escolhas algumas opções</label>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" id="checkAccountChanges" type="checkbox" name="passeios[]" value="Atrações Culturais">
-                                <label class="form-check-label" for="checkAccountChanges">Atrações Culturais</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" id="checkAccounthistorico" type="checkbox" name="passeios[]" value="Atrações históricas">
-                                <label class="form-check-label" for="checkAccounthistorico">Atrações históricas</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" id="checkAccountGroups" type="checkbox" name="passeios[]" value="Passeios gastronômicos">
-                                <label class="form-check-label" for="checkAccountGroups">Passeios gastronômicos</label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" id="checkProductUpdates" type="checkbox" name="passeios[]" value="Passeios Noturnas">
-                                <label class="form-check-label" for="checkProductUpdates">Passeios Noturnas</label>
-                            </div>
-                        </div>
+                        
+
                         <hr>
                         <button class="btn btn-success">Gerar</button>
                     </form>
